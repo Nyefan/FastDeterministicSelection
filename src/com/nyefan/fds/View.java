@@ -23,9 +23,16 @@ public class View<T> {
     }
 
     public void swap(int k, int l) {
-        if (k >= j - i || k < j - i || l >= j - i || l < j - i) { throw new ArrayIndexOutOfBoundsException(); }
+        if (k >= j - i || k < 0 || l >= j - i || l < 0) { throw new ArrayIndexOutOfBoundsException(); }
         T swap = A[k + i];
         A[k + i] = A[l + i];
         A[l + i] = swap;
+    }
+
+    public View<T> range(int k, int l) {
+        if (k >= j - i || k < 0 || l >= j - i || l < 0 || l < k) { throw new ArrayIndexOutOfBoundsException(); }
+        this.i += k;
+        this.j = i + l;
+        return this;
     }
 }
