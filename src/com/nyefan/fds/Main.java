@@ -14,9 +14,19 @@ public class Main {
     }
 
     public static <T> void quickSelect(T[] A, int k, Comparator<T> comparator) {
-        if (k >= A.length || k < 0) { return; }
+        View<T> B = new View<>(A, 0, A.length);
+
+        if (k >= B.length || k < 0) { return; }
         while (true) {
             int p = partition(A);
+            //RETURN
+            if (p == k) { return; }
+            if (p > k) {
+                B = new View<>(A, 0, p);
+            } else {
+                k = k-p-1;
+                B = new View<>(A, p+1, A.length);
+            }
         }
     }
 
@@ -25,15 +35,18 @@ public class Main {
         return A.length / 2;
     }
 
-    public class View<T> {
+    public static class View<T> {
         T[] A;
         int i;
         int j;
+
+        public final int length;
 
         public View(T[] A, int i, int j) {
             this.A = A;
             this.i = i;
             this.j = j;
+            this.length = A.length;
         }
 
         public T get(int k) {
