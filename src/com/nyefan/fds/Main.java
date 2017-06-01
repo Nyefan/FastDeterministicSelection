@@ -2,6 +2,9 @@ package com.nyefan.fds;
 
 import java.util.Comparator;
 
+import static com.nyefan.fds.Partitions.Partition;
+import static com.nyefan.fds.Partitions.HoarePartition;
+
 /**
  * FAST DETERMINISTIC SELECTION
  * This is a Java implementation of the algorithm described in the research paper published
@@ -9,17 +12,18 @@ import java.util.Comparator;
  */
 public class Main {
 
+
     public static void main(String[] args) {
 
     }
 
     public static <T> void quickSelect(T[] Array, int k, Comparator<T> comparator) {
         View<T>       A         = new View<>(Array, 0, Array.length);
-        Partitions<T> partition = new Partitions<>();
+        Partition partition = new HoarePartition<T>();
 
         if (k >= A.length || k < 0) { return; }
         while (true) {
-            int p = partition.hoarePartition(A, comparator);
+            int p = partition.apply(A, comparator);
             //RETURN
             if (p == k) { return; }
             if (p > k) {
