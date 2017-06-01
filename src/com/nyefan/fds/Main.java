@@ -13,26 +13,21 @@ public class Main {
 
     }
 
-    public static <T> void quickSelect(T[] A, int k, Comparator<T> comparator) {
-        View<T> B = new View<>(A, 0, A.length);
+    public static <T> void quickSelect(T[] Array, int k, Comparator<T> comparator) {
+        View<T>       A         = new View<>(Array, 0, Array.length);
+        Partitions<T> partition = new Partitions<>();
 
-        if (k >= B.length || k < 0) { return; }
+        if (k >= A.length || k < 0) { return; }
         while (true) {
-            int p = partition(A);
+            int p = partition.hoarePartition(A, comparator);
             //RETURN
             if (p == k) { return; }
             if (p > k) {
-                B = new View<>(A, 0, p);
+                A.range(0, p);
             } else {
-                k = k-p-1;
-                B = new View<>(A, p+1, A.length);
+                k = k - p - 1;
+                A.range(p + 1, Array.length);
             }
         }
     }
-
-    public static <T> int partition(T[] A) {
-        //TODO: implement this
-        return A.length / 2;
-    }
-
 }

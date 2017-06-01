@@ -7,8 +7,7 @@ import java.util.Comparator;
  */
 public class Partitions<T> {
 
-    public int hoarePartition(View<T> A, int p, Comparator<T> comparator) {
-        if (p < 0 || p >= A.length) { throw new ArrayIndexOutOfBoundsException(); }
+    public int hoarePartition(View<T> A, Comparator<T> comparator) {
         if (A.length <= 0) { throw new IllegalArgumentException(); }
 
         int a = 1;
