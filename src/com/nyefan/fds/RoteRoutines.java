@@ -5,7 +5,7 @@ package com.nyefan.fds;
  */
 public class RoteRoutines {
     /**
-     * swaps the median of A[a], ..., A[e] into A[c] with the guarantee that A[a], A[b] <= c and A[d], A[e] >= c
+     * swaps the median of A[a], ..., A[e] into A[c] with the guarantee that A[a], A[b] ≤ c and A[d], A[e] ≥ c
      */
     public static <T> void median5(View<T> A, int a, int b, int c, int d, int e) {
 //        A.sort(a, b);
