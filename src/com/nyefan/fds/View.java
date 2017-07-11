@@ -23,7 +23,7 @@ public class View<T> {
         this.A = A;
         this.i = i;
         this.j = j;
-        this.length = j-i;
+        this.length = j - i;
         this.comparator = comparator;
     }
 
